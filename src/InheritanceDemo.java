@@ -16,7 +16,18 @@ class AdvCalc extends Calc {
     }
 
     public int div(int n1, int n2) {
+        if (n2 == 0) {
+            System.out.println("Error: Division by zero");
+            return 0; // default or could throw an exception
+        }
         return n1 / n2;
+    }
+}
+
+// Multi-level inheritance with power functionality
+class VeryAdvCalc extends AdvCalc {
+    public double power(int n1, int n2) {
+        return Math.pow(n1, n2);
     }
 }
 
@@ -26,24 +37,25 @@ public class InheritanceDemo {
 
         // Using Calc class
         Calc basic = new Calc();
-        int sum = basic.add(5, 4);
-        int diff = basic.sub(5, 4);
-
         System.out.println("=== Basic Calculator ===");
-        System.out.println("Addition (5 + 4): " + sum);
-        System.out.println("Subtraction (5 - 4): " + diff);
+        System.out.println("Addition (5 + 4): " + basic.add(5, 4));
+        System.out.println("Subtraction (5 - 4): " + basic.sub(5, 4));
 
-        // Using AdvCalc class (inherits from Calc)
+        // Using AdvCalc class
         AdvCalc advanced = new AdvCalc();
-        int advSum = advanced.add(5, 4);  // inherited
-        int advDiff = advanced.sub(5, 4); // inherited
-        int product = advanced.mul(6, 3); // own method
-        int quotient = advanced.div(6, 3);// own method
-
         System.out.println("\n=== Advanced Calculator ===");
-        System.out.println("Addition (5 + 4): " + advSum);
-        System.out.println("Subtraction (5 - 4): " + advDiff);
-        System.out.println("Multiplication (6 * 3): " + product);
-        System.out.println("Division (6 / 3): " + quotient);
+        System.out.println("Addition (5 + 4): " + advanced.add(5, 4));     // inherited
+        System.out.println("Subtraction (5 - 4): " + advanced.sub(5, 4));  // inherited
+        System.out.println("Multiplication (6 * 3): " + advanced.mul(6, 3));
+        System.out.println("Division (6 / 3): " + advanced.div(6, 3));
+
+        // Using VeryAdvCalc class
+        VeryAdvCalc veryAdvanced = new VeryAdvCalc();
+        System.out.println("\n=== Very Advanced Calculator ===");
+        System.out.println("Addition (5 + 4): " + veryAdvanced.add(5, 4));     // from Calc
+        System.out.println("Subtraction (5 - 4): " + veryAdvanced.sub(5, 4));  // from Calc
+        System.out.println("Multiplication (6 * 3): " + veryAdvanced.mul(6, 3)); // from AdvCalc
+        System.out.println("Division (6 / 3): " + veryAdvanced.div(6, 3));       // from AdvCalc
+        System.out.println("Power (2^3): " + veryAdvanced.power(2, 3));          // from VeryAdvCalc
     }
 }

@@ -5,7 +5,7 @@ class A2{
         System.out.println("in A show");
     }
 
-    class B {
+    static class B {
         public void config() {
             System.out.println("in B config");
         }
@@ -17,7 +17,7 @@ public class InnerClassDemo {
         A2 obj = new A2();
         obj.show();
 
-        A2.B obj1 = obj.new B();
+        A2.B obj1 = new A2.B();
         obj1.config();
     }
 }

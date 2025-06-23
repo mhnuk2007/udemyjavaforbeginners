@@ -5,7 +5,7 @@ class A2{
         System.out.println("in A show");
     }
 
-    static class B {
+    class B {
         public void config() {
             System.out.println("in B config");
         }

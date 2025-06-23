@@ -1,5 +1,6 @@
 abstract class Car1 {
     public abstract void drive(); // Declaration without implementation
+    public abstract void fly();
 
 
     public void playMusic() {
@@ -13,6 +14,11 @@ class WagonR extends Car1{
     public void drive() {
         System.out.println("Driving ...");
     }
+
+    @Override
+    public void fly() {
+        System.out.println("Flying...");
+    }
 }
 
 public class AbstractKeywordDemo {
@@ -20,5 +26,6 @@ public class AbstractKeywordDemo {
         Car1 car = new WagonR();
         car.drive();         // prints: Driving ...
         car.playMusic();     // prints: Music is playing
+        car.fly();           // prints: Flying...
     }
 }
